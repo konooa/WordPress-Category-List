@@ -31,13 +31,12 @@
  */
 
 
-function wpse_prevent_on_top_cat() {
-    // Run only in admin
-    if( is_admin() ) {
-        // Change checked_ontop to false
-        $args['checked_ontop'] = false;
-        // Return the new parameter
-        return $args;
-    }
+function wpse_prevent_on_top_cat( $args ) 
+{
+    $args['checked_ontop']   = false;
+    $args['taxonomy']        = $args['taxonomy'];
+
+    return $args;
+
 }
 add_action('wp_terms_checklist_args', 'wpse_prevent_on_top_cat');
